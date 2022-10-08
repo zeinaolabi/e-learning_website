@@ -13,21 +13,17 @@ class AdminController extends Controller
     function getInstructors(){
         $users = User::where("user_type_id", "2")->get();
 
-        return response()->json(
-            [
+        return response()->json([
                 "status" => "success",
-                "Users" => $users], 200
-        );
+                "Users" => $users], 200);
     }
 
     function getStudents(Request $request){
         $users = User::where("user_type_id", "3")->get();
 
-        return response()->json(
-            [
+        return response()->json([
                 "status" => "success",
-                "Users" => $users], 200
-        );
+                "Users" => $users], 200);
     }
 
     function addUser(Request $request){
@@ -47,7 +43,6 @@ class AdminController extends Controller
 
         $validator->password = Hash::make($request->password);
 
-        //No need to merge the array, just change the password
         $user = User::create($validator->validated());
 
         return response()->json([
@@ -69,7 +64,7 @@ class AdminController extends Controller
             return response()->json($validator->errors()->toJson(), 200);
         }
 
-        $user = User::find($validator->validated()["user_id"]);
+        $user = User::find($request->user_id);
 
         if(!$user){
             return response()->json([
@@ -86,4 +81,47 @@ class AdminController extends Controller
         ], 201);
     }
 
+    function updateCourse(Request $request){
+        //Validate all input
+        $validator = Validator::make($request->all(), [
+            'id' => 'required|string',
+            'name' => 'string|unique:courses',
+            'description' => 'string|max:150',
+            'user_id' => 'string'
+        ]);
+
+        //If validation failed, display an error
+        if($validator->fails()){
+            return response()->json($validator->errors()->toJson(), 200);
+        }
+
+        //Check if the user the course is assigned to exists
+        if($request->user_id){
+            if(!User::find($request->user_id)) {
+                return response()->json([
+                    'message' => "Unable to Assign Course",
+                    'error' => '400'
+                ], 400);
+            }
+        }
+
+        $course = Course::find($request->id);
+
+        //Modify the info depending on the user's sent data
+        $course->name = $request->name != null ? $request->name : $course->name;
+        $course->description = $request->description != null ? $request->description : $course->description;
+        $course->user_id = $request->user_id != null ? $request->user_id : $course->user_id;
+
+        //If the new data wasn't saved, send back an error
+        if(!$course->save()){
+            return response()->json([
+                'message' => 'Unsuccessful Editing',
+            ], 400);
+        }
+
+        return response()->json([
+            'message' => 'Course Successfully Edited',
+            'course' => $course
+        ], 201);
+    }
 }
