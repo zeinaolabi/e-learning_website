@@ -13,6 +13,8 @@ Route::post('add_user', [AdminController::class, "addUser"]);
 Route::post('add_course', [AdminController::class, "addCourse"]);
 Route::post('update_course', [AdminController::class, "updateCourse"]);
 
+Route::post('enroll_student', [AdminController::class, "enrollStudent"]);
+
 
 Route::post('login', [AuthController::class, "login"]);
 Route::post('register', [AuthController::class, "register"]);
