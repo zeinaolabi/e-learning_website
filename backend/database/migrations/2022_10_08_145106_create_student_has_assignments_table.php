@@ -12,6 +12,7 @@ class CreateStudentHasAssignmentsTable extends Migration
             $table->id();
             $table->string("assignment_id");
             $table->string("user_id");
+            $table->string("solution");
             $table->date("finished_at")->nullable();
             $table->timestamps();
             $table->unique(array(["user_id", "assignment_id"]));
