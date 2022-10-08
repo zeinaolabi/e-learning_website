@@ -10,9 +10,9 @@ class CreateCoursesTable extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
-            $table->string("name");
+            $table->string("name")->unique();
             $table->string("description", 150);
-            $table->integer("user_id");
+            $table->string("user_id");
             $table->timestamps();
         });
     }

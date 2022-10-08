@@ -10,8 +10,8 @@ class CreateStudentHasAssignmentsTable extends Migration
     {
         Schema::create('student_has_assignments', function (Blueprint $table) {
             $table->id();
-            $table->integer("assignment_id");
-            $table->integer("user_id");
+            $table->string("assignment_id");
+            $table->string("user_id");
             $table->date("finished_at")->nullable();
             $table->timestamps();
             $table->unique(array(["user_id", "assignment_id"]));

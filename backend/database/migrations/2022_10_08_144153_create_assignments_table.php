@@ -13,8 +13,8 @@ class CreateAssignmentsTable extends Migration
             $table->string("name")->unique();
             $table->string("desc", 150);
             $table->date("due_date");
-            $table->integer("course_id");
-            $table->integer("user_id");
+            $table->string("course_id");
+            $table->string("user_id");
             $table->timestamps();
         });
     }
