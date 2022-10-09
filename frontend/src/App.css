@@ -67,6 +67,14 @@ body{
   background-color: rgb(102, 197, 240);
 }
 
+.error_message{
+  color: rgb(213, 2, 2);
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: 2vh;
+  display: none;
+}
+
 @media screen and (max-width: 1200px) {
   .login_form{
     width: 90%;
@@ -76,7 +84,7 @@ body{
   .form_content{
     width: 80%;
   }
-  
+
   .login_btn{
     width: 40%;
   }
