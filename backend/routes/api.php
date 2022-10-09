@@ -24,7 +24,7 @@ Route::get('get_instructors_courses', [InstructorController::class, "getInstruct
 Route::get('get_instructors_assignments/{course_id}', [InstructorController::class, "getInstructorsAssignments"]);
 Route::get('get_students_in_course/{course_id}', [InstructorController::class, "getStudentsPerCourse"]);
 
-Route::get('get_student_assignments/{course_id}', [StudentController::class, "getStudentsAssignments"]);
+Route::get('get_student_assignments/{user_id}/{course_id}', [StudentController::class, "getStudentsAssignments"]);
 
 
 Route::post('login', [AuthController::class, "login"]);
