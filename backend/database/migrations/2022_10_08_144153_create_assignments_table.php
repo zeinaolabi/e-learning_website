@@ -10,8 +10,8 @@ class CreateAssignmentsTable extends Migration
     {
         Schema::create('assignments', function (Blueprint $table) {
             $table->id();
-            $table->string("name")->unique();
-            $table->string("desc", 150);
+            $table->string("name");
+            $table->string("description", 150);
             $table->date("due_date");
             $table->string("course_id");
             $table->string("user_id");

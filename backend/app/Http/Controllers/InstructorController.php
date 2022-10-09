@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Assignment;
+use App\Models\Course;
 use App\Models\EnrolledIn;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Validator;
 
@@ -34,6 +37,9 @@ class InstructorController extends Controller
 
     function createAssignment(Request $request){
         $validator = Validator::make($request->all(), [
+            'name' => 'required|string',
+            'description' => 'required|string',
+            'due_date' => 'required|date',
             'course_id' => 'required|string',
             'user_id' => 'required|string'
         ]);
@@ -42,17 +48,21 @@ class InstructorController extends Controller
             return response()->json($validator->errors()->toJSON(), 200);
         }
 
-        $isEnrolled = EnrolledIn::where("user_id", $request->user_id)->
-        where("course_id", $request->course_id)->first();
+        $this->validateExistence($request->user_id, $request->course, "Unable to Create Assignment");
 
-        if($isEnrolled){
+        Assignment::create($validator->validated());
+
+        return response()->json(["message" => 'Assignment Successfully Created'], 201);
+    }
+
+    function validateExistence($userID, $courseID, $message){
+        $userExist = User::find($userID);
+        $courseExist = Course::find($courseID);
+
+        if(!$userExist || !$courseExist){
             return response()->json([
                 "error" => "400",
-                "message" => 'Student Already Enrolled'], 400);
+                "message" => $message], 400);
         }
-
-        EnrolledIn::create($validator->validated());
-
-        return response()->json(["message" => 'Student Successfully Enrolled'], 201);
     }
 }
