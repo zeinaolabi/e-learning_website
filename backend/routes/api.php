@@ -18,6 +18,7 @@ Route::post('enroll_student', [InstructorController::class, "enrollStudent"]);
 Route::post('create_assignment', [InstructorController::class, "createAssignment"]);
 Route::post('create_announcement', [InstructorController::class, "createAnnouncement"]);
 Route::post('edit_assignment', [InstructorController::class, "editAssignment"]);
+Route::post('edit_announcement', [InstructorController::class, "editAnnouncement"]);
 
 
 Route::post('login', [AuthController::class, "login"]);

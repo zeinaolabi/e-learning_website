@@ -119,6 +119,40 @@ class InstructorController extends Controller
         return response()->json(["message" => 'Announcement Successfully Created'], 201);
     }
 
+    function editAnnouncement(Request $request){
+        $validator = Validator::make($request->all(), [
+            'id' => 'required|string',
+            'title' => 'string',
+            'description' => 'string',
+        ]);
+
+        if($validator->fails()){
+            return response()->json($validator->errors()->toJSON(), 200);
+        }
+
+        $announcement = Announcement::find($request->id);
+        if(!$announcement){
+            return response()->json([
+                "error" => "400",
+                "message" => "Unable to Make Changes"], 400);
+        }
+
+        $announcement->title = $request->title != null ? $request->title : $announcement->title;
+        $announcement->description = $request->description != null ? $request->description : $announcement->description;
+
+        //If the new data wasn't saved, send back an error
+        if(!$announcement->save()){
+            return response()->json([
+                'message' => 'Unsuccessful Editing',
+            ], 400);
+        }
+
+        return response()->json([
+            'message' => 'Assignment Successfully Edited',
+            'course' => $announcement
+        ], 201);
+    }
+
     function validateExistence($userID, $courseID){
         $userExist = User::find($userID);
         $courseExist = Course::find($courseID);
