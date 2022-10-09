@@ -17,6 +17,7 @@ Route::post('update_course', [AdminController::class, "updateCourse"]);
 Route::post('enroll_student', [InstructorController::class, "enrollStudent"]);
 Route::post('create_assignment', [InstructorController::class, "createAssignment"]);
 Route::post('create_announcement', [InstructorController::class, "createAnnouncement"]);
+Route::post('edit_assignment', [InstructorController::class, "editAssignment"]);
 
 
 Route::post('login', [AuthController::class, "login"]);

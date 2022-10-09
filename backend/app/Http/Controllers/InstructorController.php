@@ -60,7 +60,41 @@ class InstructorController extends Controller
         return response()->json(["message" => 'Assignment Successfully Created'], 201);
     }
 
+    function editAssignment(Request $request){
+        $validator = Validator::make($request->all(), [
+            'id' => 'required|string',
+            'name' => 'string',
+            'description' => 'string',
+            'due_date' => 'date',
+        ]);
 
+        if($validator->fails()){
+            return response()->json($validator->errors()->toJSON(), 200);
+        }
+
+        $assignment = Assignment::find($request->id);
+        if(!$assignment){
+            return response()->json([
+                "error" => "400",
+                "message" => "Unable to Make Changes"], 400);
+        }
+
+        $assignment->name = $request->name != null ? $request->name : $assignment->name;
+        $assignment->description = $request->description != null ? $request->description : $assignment->description;
+        $assignment->due_date = $request->due_date != null ? $request->due_date : $assignment->due_date;
+
+        //If the new data wasn't saved, send back an error
+        if(!$assignment->save()){
+            return response()->json([
+                'message' => 'Unsuccessful Editing',
+            ], 400);
+        }
+
+        return response()->json([
+            'message' => 'Assignment Successfully Edited',
+            'course' => $assignment
+        ], 201);
+    }
 
     function createAnnouncement(Request $request){
         $validator = Validator::make($request->all(), [
