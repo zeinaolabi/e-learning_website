@@ -19,6 +19,7 @@ Route::post('create_assignment', [InstructorController::class, "createAssignment
 Route::post('create_announcement', [InstructorController::class, "createAnnouncement"]);
 Route::post('edit_assignment', [InstructorController::class, "editAssignment"]);
 Route::post('edit_announcement', [InstructorController::class, "editAnnouncement"]);
+Route::get('get_instructors_courses', [InstructorController::class, "getInstructorsCourses"]);
 
 
 Route::post('login', [AuthController::class, "login"]);

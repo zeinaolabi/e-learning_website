@@ -8,6 +8,7 @@ use App\Models\Course;
 use App\Models\EnrolledIn;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Validator;
 
 class InstructorController extends Controller
@@ -151,6 +152,14 @@ class InstructorController extends Controller
             'message' => 'Assignment Successfully Edited',
             'course' => $announcement
         ], 201);
+    }
+
+    function getInstructorsCourses(){
+        $userID = Auth::id();
+
+        $course = Course::where("user_id", $userID)->get();
+
+        return response()->json($course, 201);
     }
 
     function validateExistence($userID, $courseID){
