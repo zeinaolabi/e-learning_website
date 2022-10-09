@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\InstructorController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'auth:api', 'prefix' => 'auth'], function () {
@@ -13,7 +14,7 @@ Route::post('add_user', [AdminController::class, "addUser"]);
 Route::post('add_course', [AdminController::class, "addCourse"]);
 Route::post('update_course', [AdminController::class, "updateCourse"]);
 
-Route::post('enroll_student', [AdminController::class, "enrollStudent"]);
+Route::post('enroll_student', [InstructorController::class, "enrollStudent"]);
 
 
 Route::post('login', [AuthController::class, "login"]);

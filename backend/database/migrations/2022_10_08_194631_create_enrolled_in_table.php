@@ -13,7 +13,7 @@ class CreateEnrolledInTable extends Migration
             $table->string("course_id");
             $table->string("user_id");
             $table->timestamps();
-            $table->unique(array(["user_id", "course_id"]));
+            $table->unique(["user_id", "course_id"]);
         });
     }
 
