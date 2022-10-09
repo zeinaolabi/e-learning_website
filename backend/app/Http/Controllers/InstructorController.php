@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Announcement;
 use App\Models\Assignment;
 use App\Models\Course;
 use App\Models\EnrolledIn;
@@ -48,21 +49,49 @@ class InstructorController extends Controller
             return response()->json($validator->errors()->toJSON(), 200);
         }
 
-        $this->validateExistence($request->user_id, $request->course, "Unable to Create Assignment");
+        if(!$this->validateExistence($request->user_id, $request->course_id)){
+            return response()->json([
+                "error" => "400",
+                "message" => "Unable to Create Assignment"], 400);
+        }
 
         Assignment::create($validator->validated());
 
         return response()->json(["message" => 'Assignment Successfully Created'], 201);
     }
 
-    function validateExistence($userID, $courseID, $message){
+
+
+    function createAnnouncement(Request $request){
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|string',
+            'description' => 'required|string',
+            'course_id' => 'required|string',
+            'user_id' => 'required|string'
+        ]);
+
+        if($validator->fails()){
+            return response()->json($validator->errors()->toJSON(), 200);
+        }
+
+        if($this->validateExistence($request->user_id, $request->course_id)){
+            return response()->json([
+                "error" => "400",
+                "message" => "Unable to Create Announcement"], 400);
+        }
+
+        Announcement::create($validator->validated());
+
+        return response()->json(["message" => 'Announcement Successfully Created'], 201);
+    }
+
+    function validateExistence($userID, $courseID){
         $userExist = User::find($userID);
         $courseExist = Course::find($courseID);
 
         if(!$userExist || !$courseExist){
-            return response()->json([
-                "error" => "400",
-                "message" => $message], 400);
+            return true;
         }
+        return false;
     }
 }

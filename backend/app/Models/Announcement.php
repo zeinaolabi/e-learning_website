@@ -8,4 +8,11 @@ use Jenssegers\Mongodb\Eloquent\Model;
 class Announcement extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'title',
+        'description',
+        'course_id',
+        'user_id'
+    ];
 }
