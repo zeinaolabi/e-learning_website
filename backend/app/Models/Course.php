@@ -22,4 +22,8 @@ class Course extends Model
     public function announcements(){
         return $this->hasMany(Announcement::class, 'course_id', 'id');
     }
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }
