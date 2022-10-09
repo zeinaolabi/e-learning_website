@@ -75,10 +75,11 @@ class StudentController extends Controller
     }
 
     function submitAssignment(Request $request){
+        $userID = Auth::id();
+
         //Validate all input
         $validator = Validator::make($request->all(), [
             'assignment_id' => 'required|string|unique:courses',
-            'user_id' => 'required|string',
             'solution' => 'required|string'
         ]);
 
@@ -96,7 +97,7 @@ class StudentController extends Controller
             ], 400);
         }
 
-        $isSubmitted = UserHasAssignment::where("user_id", $request->user_id)->
+        $isSubmitted = UserHasAssignment::where("user_id", $userID)->
         where("assignment_id", $request->assignment_id)->first();
 
         if($isSubmitted){

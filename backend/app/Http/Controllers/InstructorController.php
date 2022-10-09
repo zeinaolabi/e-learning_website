@@ -7,6 +7,7 @@ use App\Models\Assignment;
 use App\Models\Course;
 use App\Models\EnrolledIn;
 use App\Models\User;
+use App\Models\UserHasAssignment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Validator;
@@ -196,6 +197,24 @@ class InstructorController extends Controller
         }
 
         return response()->json($result, 201);
+    }
+
+    function getSubmittedAssignments($assignmentID){
+        $assignmentExist = Assignment::find($assignmentID);
+
+        if(!$assignmentExist){
+            return response()->json([
+                'message' => 'Unable to Retrieve Data',
+            ], 400);
+        }
+
+        $submittedAssignments = UserHasAssignment::where("assignment_id", $assignmentID)->get();
+
+        foreach($submittedAssignments as $submittedAssignment){
+            $submittedAssignment->user;
+        }
+
+        return response()->json($submittedAssignments, 201);
     }
 
     function validateExistence($userID, $courseID){

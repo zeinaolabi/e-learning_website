@@ -17,4 +17,8 @@ class UserHasAssignment extends Model
         'user_id',
         'solution'
     ];
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

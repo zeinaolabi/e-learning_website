@@ -23,6 +23,7 @@ Route::post('edit_announcement', [InstructorController::class, "editAnnouncement
 Route::get('get_instructors_courses', [InstructorController::class, "getInstructorsCourses"]);
 Route::get('get_instructors_assignments/{course_id}', [InstructorController::class, "getInstructorsAssignments"]);
 Route::get('get_students_in_course/{course_id}', [InstructorController::class, "getStudentsPerCourse"]);
+Route::get('get_submitted_assignments/{assignment_id}', [InstructorController::class, "getSubmittedAssignments"]);
 
 Route::get('get_student_assignments/{course_id}', [StudentController::class, "getStudentsAssignments"]);
 Route::get('get_student_courses/{course_id}', [StudentController::class, "getStudentsCourses"]);
