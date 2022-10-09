@@ -6,8 +6,10 @@ use App\Models\Announcement;
 use App\Models\Assignment;
 use App\Models\Course;
 use App\Models\EnrolledIn;
+use App\Models\UserHasAssignment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Validator;
 
 class StudentController extends Controller
 {
@@ -70,5 +72,43 @@ class StudentController extends Controller
         }
 
         return response()->json($announcements, 200);
+    }
+
+    function submitAssignment(Request $request){
+        //Validate all input
+        $validator = Validator::make($request->all(), [
+            'assignment_id' => 'required|string|unique:courses',
+            'user_id' => 'required|string',
+            'solution' => 'required|string'
+        ]);
+
+        //If validation failed, display an error
+        if($validator->fails()){
+            return response()->json($validator->errors()->toJson(), 200);
+        }
+
+        $assignment = Assignment::find($request->assignment_id);
+
+        if(!$assignment){
+            return response()->json([
+                'message' => "Unable to Submit Assignment",
+                'error' => '400'
+            ], 400);
+        }
+
+        $isSubmitted = UserHasAssignment::where("user_id", $request->user_id)->
+        where("assignment_id", $request->assignment_id)->first();
+
+        if($isSubmitted){
+            return response()->json([
+                "error" => "400",
+                "message" => 'Assignment Already Submitted'], 400);
+        }
+
+        UserHasAssignment::create($validator->validated());
+
+        return response()->json([
+            'message' => 'Assignment Successfully Submitted',
+        ], 201);
     }
 }

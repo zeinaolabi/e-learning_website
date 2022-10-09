@@ -9,4 +9,12 @@ use Jenssegers\Mongodb\Eloquent\Model;
 class UserHasAssignment extends Model
 {
     use HasFactory;
+
+    protected $collection = "user_has_assignment";
+
+    protected $fillable = [
+        'assignment_id',
+        'user_id',
+        'solution'
+    ];
 }
