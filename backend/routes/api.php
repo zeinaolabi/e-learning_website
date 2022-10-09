@@ -20,6 +20,7 @@ Route::post('create_announcement', [InstructorController::class, "createAnnounce
 Route::post('edit_assignment', [InstructorController::class, "editAssignment"]);
 Route::post('edit_announcement', [InstructorController::class, "editAnnouncement"]);
 Route::get('get_instructors_courses', [InstructorController::class, "getInstructorsCourses"]);
+Route::get('get_instructors_assignments/{course_id}', [InstructorController::class, "getInstructorsAssignments"]);
 
 
 Route::post('login', [AuthController::class, "login"]);
