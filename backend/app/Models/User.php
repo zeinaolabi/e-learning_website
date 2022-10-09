@@ -25,19 +25,23 @@ class User extends Authenticatable  implements JWTSubject
     ];
 
     public function assignments(){
-        return $this->hasMany(Assignment::class, 'user_id', 'id');
+        return $this->hasMany(Assignment::class, 'user_id', '_id');
     }
 
     public function announcements(){
-        return $this->hasMany(Announcement::class, 'user_id', 'id');
+        return $this->hasMany(Announcement::class, 'user_id', '_id');
     }
 
     public function courses(){
-        return $this->hasMany(Course::class, 'user_id', 'id');
+        return $this->hasMany(Course::class, 'user_id', '_id');
     }
 
     public function userHasAssignments(){
-        return $this->hasMany(UserHasAssignment::class, 'user_id', 'id');
+        return $this->hasMany(UserHasAssignment::class, 'user_id', '_id');
+    }
+
+    public function enrolledIn(){
+        return $this->hasMany(EnrolledIn::class);
     }
 
     public function getJWTIdentifier(){

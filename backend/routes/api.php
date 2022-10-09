@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\InstructorController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'auth:api', 'prefix' => 'auth'], function () {
@@ -21,6 +22,9 @@ Route::post('edit_assignment', [InstructorController::class, "editAssignment"]);
 Route::post('edit_announcement', [InstructorController::class, "editAnnouncement"]);
 Route::get('get_instructors_courses', [InstructorController::class, "getInstructorsCourses"]);
 Route::get('get_instructors_assignments/{course_id}', [InstructorController::class, "getInstructorsAssignments"]);
+Route::get('get_students_in_course/{course_id}', [InstructorController::class, "getStudentsPerCourse"]);
+
+Route::get('get_student_assignments/{course_id}', [StudentController::class, "getStudentsAssignments"]);
 
 
 Route::post('login', [AuthController::class, "login"]);

@@ -179,6 +179,25 @@ class InstructorController extends Controller
         return response()->json($assignment, 201);
     }
 
+    function getStudentsPerCourse($courseID){
+        $courseExist = Course::find($courseID);
+
+        if(!$courseExist){
+            return response()->json([
+                'message' => 'Unable to Retrieve Data',
+            ], 400);
+        }
+
+        $students = EnrolledIn::where("course_id", $courseID)->get();
+
+        $result = [];
+        foreach ($students as $student) {
+            $result[] = $student->user;
+        }
+
+        return response()->json($result, 201);
+    }
+
     function validateExistence($userID, $courseID){
         $userExist = User::find($userID);
         $courseExist = Course::find($courseID);
