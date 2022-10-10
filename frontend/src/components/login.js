@@ -1,13 +1,12 @@
 import React, {useState} from "react";
 
-const LoginFrom = ({login, error}) => {
+const LoginFrom = ({Login, error}) => {
 
     const [input, setInput] = useState({email:"", password:""});
 
     const submit = (e) =>{
         e.preventDefault();
-
-        login(input);
+        Login(input);
     }
 
     return(
@@ -19,7 +18,7 @@ const LoginFrom = ({login, error}) => {
                 <input type="password" className="textfield" placeholder="Password" onChange={(e) =>setInput({...input, password: e.target.value})}></input>
 
                 <button className="login_btn" onClick={submit}>Login in</button> 
-                {(error != "") ? <span className="error_message">{error}</span> : ""}
+                {(error !== "") ? <span className="error_message">{error}</span> : ""}
             </div>
         </div>
     )
