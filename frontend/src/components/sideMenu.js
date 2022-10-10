@@ -1,14 +1,7 @@
 import {Link} from 'react-router-dom';
+import Logout from './../hooks/logoutHook';
 
 const SideMenu = () => {
-
-    const submit = (e) =>{
-        e.preventDefault();
-        console.log("hyi");
-
-        localStorage.clear();
-        window.location.href = '/';
-    }
 
   return (
     <nav className="side_menu">
@@ -21,7 +14,7 @@ const SideMenu = () => {
             </div>
 
             <div className='logout'>
-                <button className='transparent_button' onClick={submit}>Logout</button>
+                <button className='transparent_button' onClick={Logout}>Logout</button>
             </div>
         </div>
     </nav>
