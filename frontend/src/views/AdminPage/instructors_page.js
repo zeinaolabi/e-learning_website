@@ -1,6 +1,6 @@
 import React from "react";
-import SideMenu from './../components/sideMenu';
-import Header from '../components/header';
+import SideMenu from '../../components/sideMenu';
+import Header from '../../components/header';
 
 const AdminPage = () => {
 

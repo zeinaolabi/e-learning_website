@@ -7,6 +7,21 @@ const LoginFrom = () => {
     const [input, setInput] = useState({email:"", password:""});
     const [error, setError ] = useState("");
 
+    const submit = async (e) => {
+        e.preventDefault();
+        
+        await axios.post(baseURL, input)
+        .then( response => {
+            localStorage.setItem("id", response.data.user._id);
+            localStorage.setItem("token", "Bearer " + response.data.access_token);
+            localStorage.setItem("type", response.data.user.user_type_id);
+            window.location.reload()
+        })
+        .catch((error) =>{
+            setError("Invalid Input")
+        });
+    }
+
     return(
         <div className="login_form" >
                 <div className="form_content">
