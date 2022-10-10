@@ -16,7 +16,7 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(239, 239, 239);
+  background-color: rgb(238, 238, 238);
 }
 
 .login_form{
@@ -73,6 +73,67 @@ body{
   font-weight: 700;
   margin-top: 2vh;
   display: none;
+}
+
+.admin_container{
+  width: 100%;
+  height: 100%;
+}
+
+.side_menu{
+  display: flex;
+  flex-direction: column;
+  width: 15%;
+  height: 100%;
+  justify-content: left;
+  float: left;
+}
+
+.side_menu_container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  border-right: 1px solid rgb(147, 147, 147);
+  box-shadow: 2px 2px 5px rgb(180, 180, 180);
+}
+
+.side_menu_title{
+  margin-top: 5vh;
+  margin-bottom: 2vh;
+  color:rgb(63, 132, 164);
+  text-decoration: none;
+}
+
+.side_menu_button{
+  width: 100%;
+  padding: 1vh 0;
+  text-align: center;
+}
+
+.transparent_button{
+  background-color: transparent;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+  width: 90%;
+  height: 6vh;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.transparent_button:hover{
+    background-color: rgb(225, 225, 225);
+}
+
+.header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 7%;
+  width: 85%;
+  background-color:rgb(63, 132, 164);
 }
 
 @media screen and (max-width: 1200px) {
