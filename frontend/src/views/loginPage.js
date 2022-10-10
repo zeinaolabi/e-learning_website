@@ -1,12 +1,24 @@
 import React, {useState} from "react";
+import axios from "axios";
+const baseURL = "http://127.0.0.1:8003/api/login";
 
-const LoginFrom = ({Login, error}) => {
+const LoginFrom = () => {
 
     const [input, setInput] = useState({email:"", password:""});
+    const [error, setError ] = useState("");
 
     const submit = (e) =>{
         e.preventDefault();
-        Login(input);
+        
+        axios.post(baseURL, input)
+        .then( response => {
+            localStorage.setItem("id", response.data.user._id);
+            localStorage.setItem("token", "Bearer " + response.data.access_token);
+            localStorage.setItem("type", response.data.user.user_type_id);
+        })
+        .catch((error) =>{
+            setError("Invalid Input")
+        });
     }
 
     return(

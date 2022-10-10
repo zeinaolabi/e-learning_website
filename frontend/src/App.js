@@ -5,7 +5,6 @@ import LoginFrom from './views/loginPage';
 import AdminPanel from './views/adminPage';
 import InstructorPage from './views/instructorPage'
 import StudentPage from './views/studentPage';
-import Login from './hooks/loginHook';
 
 const userID = localStorage.getItem("id");
 const userToken = localStorage.getItem("token");
@@ -26,7 +25,7 @@ function App() {
   else if(isStudent){
     openPage = <StudentPage />}
   else{
-    openPage = <LoginFrom Login={Login} error={error}/> 
+    openPage = <LoginFrom /> 
   }
 
   return (
