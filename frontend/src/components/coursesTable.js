@@ -3,6 +3,11 @@ import { useState } from 'react';
 import axios from "axios";
 import Modal from './courseModal';
 const updateUserAPI = "http://127.0.0.1:8000/api/update_course";
+const config = {
+    headers: {
+      Authorization: localStorage.getItem("token")
+    }
+}
 
 function Table({url}) {
     const [user, setUser] = useState([]);
@@ -10,7 +15,7 @@ function Table({url}) {
     const [showModal, setShow] = useState(false); 
 
     const getUsers = async() => {
-        const response = await axios(url);
+        const response = await axios(url, config);
         setUser(response.data.Users)
     }
 

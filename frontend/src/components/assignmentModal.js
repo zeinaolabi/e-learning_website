@@ -1,12 +1,21 @@
 import React, {useState} from "react";
 import axios from "axios";
+const userID = localStorage.getItem("id");
+const config = {
+    headers: {
+      Authorization: localStorage.getItem("token")
+    }
+}
 
 const AssignmentModal = (props) => {
-    const [input, setInput] = useState({name:"", description:"", id: props.id});
+    const [input, setInput] = useState({name:"", description:"", due_date:"", course_id: props.id, user_id: userID});
     const [error, setError ] = useState("");
+    const createAssignmentAPI = "http://127.0.0.1:8000/api/create_assignment";
 
+    console.log(input);
     const submit = async (e) =>{     
-        await axios.post(props.url, input)
+        console.log("hi");
+        await axios.post(createAssignmentAPI, input, config)
         .then(response => {
             console.log(response)
             window.location.reload()})
@@ -21,7 +30,7 @@ const AssignmentModal = (props) => {
     
     return(
         <div className="modal" >
-            <div className="modal_content" onClick={e => e.stopPropagation}>
+            <div className="modal_content">
                 <div className="modal_header">
                     <h1>{props.title}</h1>
                     <button onClick={props.onClose} className="blue_button">Close</button>
@@ -29,12 +38,11 @@ const AssignmentModal = (props) => {
                 <div className="modal_body">
                 <input type="text" className="textfield" placeholder="Name" onChange={(e) =>setInput({...input, name: e.target.value})}></input>
                 <input type="text" className="textfield" placeholder="Description" onChange={(e) =>setInput({...input, description: e.target.value})}></input>
-                <input type="text" className="textfield" placeholder="Instructor Email" onChange={(e) =>setInput({...input, user_id: e.target.value})}></input>
+                <input type="text" className="textfield" placeholder="Due Date" onChange={(e) =>setInput({...input, due_date: e.target.value})}></input>
 
                 </div>
                 <div className="modal_footer">
-                    <button onClick={event => submit} 
-                        className="blue_button">Submit</button>
+                    <button onClick={event => submit()} className="blue_button">Submit</button>
                     {(error !== "") ? <span className="error_message">{error}</span> : ""}
                 </div>
             </div>
