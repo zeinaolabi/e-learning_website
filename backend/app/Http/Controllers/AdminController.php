@@ -136,4 +136,40 @@ class AdminController extends Controller
             'course' => $course
         ], 201);
     }
+
+    function updateUser(Request $request){
+        //Validate all input
+        $validator = Validator::make($request->all(), [
+            'id' => 'required|string',
+            'first_name' => 'string',
+            'last_name' => 'string',
+            'email' => 'string|email|unique:users',
+            'password' => 'string|min:6'
+        ]);
+
+        //If validation failed, display an error
+        if($validator->fails()){
+            return response()->json($validator->errors()->toJson(), 200);
+        }
+
+        $user = User::find($request->id);
+
+        //Modify the info depending on the user's sent data
+        $user->first_name = $request->first_name != null ? $request->first_name : $user->first_name;
+        $user->last_name = $request->last_name != null ? $request->last_name : $user->last_name;
+        $user->email = $request->email != null ? $request->email : $user->email;
+        $user->password = $request->password != null ? Hash::make($request->password) : $user->password;
+
+        //If the new data wasn't saved, send back an error
+        if(!$user->save()){
+            return response()->json([
+                'message' => 'Unsuccessful Editing',
+            ], 400);
+        }
+
+        return response()->json([
+            'message' => 'Course Successfully Edited',
+            'course' => $user
+        ], 201);
+    }
 }

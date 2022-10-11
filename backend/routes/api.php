@@ -15,6 +15,7 @@ Route::get('get_courses', [AdminController::class, "getCourses"]);
 Route::post('add_user', [AdminController::class, "addUser"]);
 Route::post('add_course', [AdminController::class, "addCourse"]);
 Route::post('update_course', [AdminController::class, "updateCourse"]);
+Route::post('update_user', [AdminController::class, "updateUser"]);
 
 Route::post('enroll_student', [InstructorController::class, "enrollStudent"]);
 Route::post('create_assignment', [InstructorController::class, "createAssignment"]);
