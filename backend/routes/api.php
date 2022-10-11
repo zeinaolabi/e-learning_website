@@ -27,10 +27,10 @@ Route::group(['middleware' => 'auth:api', 'prefix' => 'auth'], function () {
         Route::get('/get_instructors_courses',  "getInstructorsCourses");
         Route::get('/get_students_in_course/{course_id}', "getStudentsPerCourse");
         Route::get('/get_submitted_assignments/{assignment_id}', "getSubmittedAssignments");
+        Route::get('/get_assignments/{course_id}', "getInstructorsCourses");
     });
 
     Route::controller(StudentController::class)->group(function () {
-        Route::get('/get_assignments/{course_id}', "getStudentsAssignments");
         Route::get('/get_student_courses', "getStudentsCourses");
         Route::get('/get_course_announcements/{course_id}', "getCourseAnnouncements");
         Route::post('/submit_assignment', "submitAssignment");
