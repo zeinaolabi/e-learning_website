@@ -11,7 +11,6 @@ function AnnouncementInput(courseID) {
         console.log(input)
         await axios.post(addAssignmentAPI, input)
         .then(response => {
-            console.log(response)
             window.location.reload()})
     }
 
@@ -19,7 +18,6 @@ function AnnouncementInput(courseID) {
         setInput({...input, course_id: courseID.courseID})
     },[courseID])
 
-    console.log(input);
     return(
         <div className="announcement_input">
             <h3 className="title">Announcements</h3>

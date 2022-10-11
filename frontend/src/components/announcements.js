@@ -14,20 +14,18 @@ function Announcements({courseID}) {
     const getAssignments = async() => {
         const response = await axios(getAnnouncementsAPI, config);
         setAnnouncement(response.data)
-        console.log(response.data)
     }
 
     useEffect( () =>{
         getAssignments();
     }, [])
 
-
     return(
         <div className="announcements">
             {
                 announcement.map((data)=>{
                     return(
-                        <Announcement user={data.user.first_name + " " + data.user.last_name} title={data.title} description={data.description} due_date={data.due_date}/>
+                        <Announcement user={data.user.first_name + " " + data.user.last_name} title={data.title} description={data.description} created_at={data.created_at}/>
                     )
                 })
             }

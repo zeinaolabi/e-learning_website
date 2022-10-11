@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { useLocation } from 'react-router-dom';
 import CommonHeader from "../../components/commonHeader";
 import Assignments from "../../components/assignments";
@@ -18,7 +18,8 @@ const CoursePage = ({courseID}) => {
                 <div class="course_page_content">
                     <div className="assignments_container">
                         <Assignments courseID={id}/>
-
+                        
+                        <button className="blue_button bigger">View Enrolled Students</button>
                     </div>
                     <div className="announcements_container">
                         <AnnouncementInput courseID={id}/>

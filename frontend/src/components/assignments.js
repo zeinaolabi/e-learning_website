@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
-import Assignment from './assignment'
+import Assignment from './assignment';
+import AssignmentModal from "./assignmentModal";
 const config = {
     headers: {
       Authorization: localStorage.getItem("token")
@@ -10,6 +11,7 @@ const config = {
 function Assignments({courseID}) {
     const getAssignmentsAPI = "http://127.0.0.1:8000/api/get_instructors_assignments/" + courseID;
     const [assignment, setAssignment] = useState([]);
+    const [showModal, setShow] = useState(false); 
 
     const getAssignments = async() => {
         const response = await axios(getAssignmentsAPI, config);
@@ -20,10 +22,13 @@ function Assignments({courseID}) {
         getAssignments();
     }, [])
 
-
     return(
         <div className="assignments">
-            <h3 className="title">Assignments</h3>
+            <div class="assignments_header">
+                <h3 className="title">Assignments</h3>
+                <button onClick={()=>setShow(true)} className="blue_button">Add Assignment</button>
+            </div>
+        
             {
                 assignment.map((data)=>{
                     return(
@@ -31,6 +36,8 @@ function Assignments({courseID}) {
                     )
                 })
             }
+
+        <AssignmentModal onClose={()=>setShow(false)} show={showModal} id={courseID} title="Add Assignment"/>
         </div>
     )
 }
