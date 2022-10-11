@@ -1,5 +1,5 @@
 import {Link} from 'react-router-dom';
-import Logout from './../hooks/logoutHook';
+import Logout from '../hooks/useLogoutHook';
 
 const SideMenu = () => {
 

@@ -320,11 +320,17 @@ a{
 .commonHeader{
   display: flex;
   align-items: center;
+  justify-content: center;
   height: 7%;
   width: 100%;
   background-color:transparent;
   border-bottom: 1px solid rgb(157, 157, 157);
   box-shadow: 1px 1px 5px rgb(157, 157, 157);
+}
+
+.commonHeader .transparent_button{
+  width: 5vw;
+  float: right;
 }
 
 .course_page{
@@ -407,6 +413,14 @@ a{
   margin-top: 5vh;
 }
 
+.create_assignment{
+  width: 98%;
+  margin: 1vh;
+  background-color: rgb(244, 244, 244);
+  border-bottom: 1px solid rgb(157, 157, 157);
+  box-shadow: 1px 1px 5px rgb(157, 157, 157);
+}
+
 .input{
   width: 99%;
   height: 10vh;
@@ -414,9 +428,12 @@ a{
   border: none;
   outline: none;
   padding:1vw;
-  background-color: rgb(244, 244, 244);
-  border-bottom: 1px solid rgb(157, 157, 157);
-  box-shadow: 1px 1px 5px rgb(157, 157, 157);
+  background-color: transparent;
+}
+
+.create_assignment .blue_button{
+  float:right;
+  margin: 1vh;
 }
 
 @media screen and (max-width: 1200px) {
