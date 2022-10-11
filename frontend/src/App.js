@@ -2,9 +2,10 @@ import './App.css';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import React, {useState} from 'react';
 import LoginFrom from './views/loginPage';
-import AdminPanel from './views/AdminPage/instructors_page';
+import AdminPanel from './views/AdminPage/instructorsPage';
 import InstructorPage from './views/instructorPage'
-import GetStudentPage from './views/AdminPage/students_page';
+import GetStudentsPage from './views/AdminPage/studentsPage';
+import GetCoursesPage from './views/AdminPage/coursesPage';
 
 const userID = localStorage.getItem("id");
 const userToken = localStorage.getItem("token");
@@ -34,7 +35,8 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={openPage} />
-          <Route path="/students_page" element={<GetStudentPage />} />
+          <Route path="/students_page" element={<GetStudentsPage />} />
+          <Route path="/courses_page" element={<GetCoursesPage />} />
         </Routes>
       </Router>
       

@@ -2,14 +2,14 @@ import React from "react";
 import SideMenu from '../../components/sideMenu';
 import Header from '../../components/header';
 
-const StudentPage = () => {
+const GetCoursesPage = () => {
 
     return(
         <div class="admin_container">
             <SideMenu />
-            <Header title="Meow"/>
+            <Header title="Courses Page"/>
         </div>
     )
 }
 
-export default StudentPage;
+export default GetCoursesPage;

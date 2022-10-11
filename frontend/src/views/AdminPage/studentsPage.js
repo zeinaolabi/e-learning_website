@@ -2,14 +2,14 @@ import React from "react";
 import SideMenu from '../../components/sideMenu';
 import Header from '../../components/header';
 
-const AdminPage = () => {
+const GetStudentsPage = () => {
 
     return(
         <div class="admin_container">
             <SideMenu />
-            <Header title="Admin Panel"/>
+            <Header title="Students Page"/>
         </div>
     )
 }
 
-export default AdminPage;
+export default GetStudentsPage;
