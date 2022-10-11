@@ -183,6 +183,11 @@ tr{
   width: 100%;
 }
 
+tr, td:last-child{
+  border: none;
+}
+
+
 td, th{
   width: 33%;
   padding: 1vh 1vw;
