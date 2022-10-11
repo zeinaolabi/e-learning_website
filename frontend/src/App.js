@@ -4,6 +4,7 @@ import React, {useState} from 'react';
 import LoginFrom from './views/loginPage';
 import AdminPanel from './views/AdminPage/instructorsPage';
 import InstructorPage from './views/InstructorPage/coursesPage'
+import StudentPage from './views/StudentPage/coursesPage'
 import GetStudentsPage from './views/AdminPage/studentsPage';
 import GetCoursesPage from './views/InstructorPage/coursePage';
 import EnrolledStudentsPage from './views/InstructorPage/enrolledStudentsPage';
@@ -23,9 +24,9 @@ function App() {
   else if(isInstructor){
     openPage = <InstructorPage />;
   }
-  // else if(isStudent){
-  //   openPage = <StudentPage />
-  // }
+  else if(isStudent){
+    openPage = <StudentPage />
+  }
   else{
     openPage = <LoginFrom /> 
   }

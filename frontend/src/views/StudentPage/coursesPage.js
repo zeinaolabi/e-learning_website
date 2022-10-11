@@ -1,13 +1,12 @@
 import React, {useState} from "react";
 import CommonHeader from "../../components/commonHeader";
-import Courses from "../../components/courses"
-const getCoursesAPI = "http://127.0.0.1:8000/api/get_instructors_courses";
+import StudentCourses from "../../components/studentCourses"
 
 const CoursesPage = () => {
     return(
         <div class="courses_container">
             <CommonHeader title="Courses"/>
-            <Courses url={getCoursesAPI}/>
+            <StudentCourses />
         </div>
     )
 }
