@@ -15,7 +15,6 @@ function Courses() {
     const getCourses = async() => {
         const response = await axios(getCoursesAPI, config);
         setCourse(response.data)
-        console.log(response)
     }
 
     useEffect( () =>{

@@ -6,9 +6,10 @@ import AdminPanel from './views/AdminPage/instructorsPage';
 import InstructorPage from './views/InstructorPage/coursesPage'
 import StudentPage from './views/StudentPage/coursesPage'
 import GetStudentsPage from './views/AdminPage/studentsPage';
-import GetCoursesPage from './views/InstructorPage/coursePage';
+import GetCoursesPage from './views/AdminPage/coursesPage';
 import EnrolledStudentsPage from './views/InstructorPage/enrolledStudentsPage';
 import StudentCoursePage from './views/StudentPage/coursePage';
+import GetInstructorCoursesPage from './views/InstructorPage/coursePage'
 
 const userID = localStorage.getItem("id");
 const userType = localStorage.getItem("type");
@@ -39,7 +40,7 @@ function App() {
           <Route path="/" element={openPage} />
           <Route path="/students_page" element={<GetStudentsPage />} />
           <Route path="/courses_page" element={<GetCoursesPage />} />
-          <Route path="/instructor_course" element={<GetCoursesPage />} />
+          <Route path="/instructor_course" element={<GetInstructorCoursesPage />} />
           <Route path="/enrolled_students" element={<EnrolledStudentsPage />} />
           <Route path="/student_course" element={<StudentCoursePage />} />
         </Routes>
