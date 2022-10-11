@@ -9,12 +9,12 @@ const config = {
     }
 }
 
-function Table({url}) {
+function CourseTable({url}) {
     const [user, setUser] = useState([]);
     const [id, setID] = useState("");
     const [showModal, setShow] = useState(false); 
 
-    const getUsers = async() => {
+    const getCourses = async() => {
         const response = await axios(url, config);
         setUser(response.data.Users)
     }
@@ -24,9 +24,8 @@ function Table({url}) {
     }
 
     useEffect( () =>{
-        getUsers();
-        getID();
-    }, [getUsers, getID])
+        getCourses();
+    }, [id])
 
     return(
         <>
@@ -50,4 +49,4 @@ function Table({url}) {
     )
 }
 
-export default Table;
+export default CourseTable;

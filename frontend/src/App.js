@@ -6,7 +6,7 @@ import AdminPanel from './views/AdminPage/instructorsPage';
 import InstructorPage from './views/InstructorPage/coursesPage'
 import StudentPage from './views/StudentPage/coursesPage'
 import GetStudentsPage from './views/AdminPage/studentsPage';
-import GetCoursesPage from './views/InstructorPage/coursePage';
+import GetCoursesPage from './views/AdminPage/coursesPage';
 import EnrolledStudentsPage from './views/InstructorPage/enrolledStudentsPage';
 import StudentCoursePage from './views/StudentPage/coursePage';
 

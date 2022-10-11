@@ -17,7 +17,6 @@ function Table({url}) {
 
     const getUsers = async() => {
         const response = await axios(url, config);
-        console.log(response)
         setUser(response.data.Users)
     }
 
