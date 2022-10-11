@@ -155,23 +155,6 @@ class InstructorController extends Controller
         return response()->json($course, 201);
     }
 
-    function getInstructorsAssignments($courseID){
-        $userID = Auth::id();
-
-        $courseExist = Course::find($courseID);
-
-        if(!$courseExist){
-            return response()->json([
-                'message' => 'Unable to Retrieve Data',
-            ], 400);
-        }
-
-        $assignment = Assignment::where("user_id", $userID)->
-            where("course_id", $courseID)->get();
-
-        return response()->json($assignment, 200);
-    }
-
     function getStudentsPerCourse($courseID){
         $courseExist = Course::find($courseID);
 
