@@ -28,7 +28,7 @@ function StudentCourses() {
                 course.map((data)=>{
                     return(
                         <Link to="/student_course" state={{ id: data._id, title: data.name }} className="navbar_title">
-                        <Course title={data.name} description={data.description} instructor={(data.user.first_name + data.user.last_name) != null ?  (data.user.first_name + data.user.last_name) : ""}/>
+                            <Course title={data.name} description={data.description} instructor={(data.user.first_name + data.user.last_name) != null ?  (data.user.first_name + data.user.last_name) : ""}/>
                         </Link>
                     )
                 })
