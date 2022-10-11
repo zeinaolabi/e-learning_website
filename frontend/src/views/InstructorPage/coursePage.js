@@ -1,11 +1,12 @@
 import React, {useState} from "react";
+import { Link } from "react-router-dom";
 import { useLocation } from 'react-router-dom';
 import CommonHeader from "../../components/commonHeader";
 import Assignments from "../../components/assignments";
 import AnnouncementInput from "../../components/announcementInput";
 import Announcements from "../../components/announcements";
 
-const CoursePage = ({courseID}) => {
+const CoursePage = () => {
     const location = useLocation()
     const { id } = location.state;
     const { title } = location.state;
@@ -19,7 +20,7 @@ const CoursePage = ({courseID}) => {
                     <div className="assignments_container">
                         <Assignments courseID={id}/>
                         
-                        <button className="blue_button bigger">View Enrolled Students</button>
+                        <Link to="/enrolled_students" className="link" state={{id}}><button className="blue_button bigger">View Enrolled Students</button></Link>
                     </div>
                     <div className="announcements_container">
                         <AnnouncementInput courseID={id}/>
