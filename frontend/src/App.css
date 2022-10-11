@@ -144,11 +144,25 @@ body{
 
 .header{
   display: flex;
-  justify-content: center;
   align-items: center;
   height: 7%;
   width: 100%;
   background-color:rgb(63, 132, 164);
+}
+
+.header_title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 7%;
+  width: 100%;
+}
+
+.header .transparent_button{
+  width: 10%;
+  height: fit-content;
+  padding: 1vh 0;
+  float: right
 }
 
 .logout{
@@ -216,7 +230,17 @@ td, th{
   background-color: white;
 }
 
-.modal_header, .modal_footer{
+.modal_header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.modal_footer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 10px;
 }
 
@@ -225,9 +249,24 @@ td, th{
 }
 
 .modal_body{
-  padding: 10px;
+  padding: 2vw;
   border-top: 1px solid rgb(180, 180, 180);
   border-bottom: 1px solid rgb(180, 180, 180);
+}
+
+.blue_button{
+  background-color: rgb(102, 197, 240);
+  border-radius: 30px;
+  border: none;
+  outline: none;
+  width: 20%;
+  height: 4vh;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.blue_button:hover{
+  background-color: rgb(80, 177, 222);
 }
 
 @media screen and (max-width: 1200px) {
