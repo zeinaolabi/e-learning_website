@@ -2,7 +2,7 @@ import React from "react";
 import SideMenu from '../../components/sideMenu';
 import Header from '../../components/headerAdmin';
 import Table from '../../components/usersTable';
-const baseURL = "http://127.0.0.1:8000/api";
+const baseURL = "http://127.0.0.1:8000/api/auth";
 const getStudentsAPI = "/get_students";
 
 const AdminPage = () => {

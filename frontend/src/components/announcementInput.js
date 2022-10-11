@@ -1,15 +1,19 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
-import Logout from "../hooks/useLogoutHook";
 const userID = localStorage.getItem("id");
+const config = {
+    headers: {
+      Authorization: localStorage.getItem("token")
+    }
+}
+console.log(localStorage.getItem("token"))
 
 function AnnouncementInput(courseID) {
     const [input, setInput] = useState({course_id: courseID.courseID, user_id: userID, description: ""});
-    const addAssignmentAPI = "http://127.0.0.1:8000/api/create_announcement";
+    const addAssignmentAPI = "http://127.0.0.1:8000/api/auth/create_announcement";
 
     const submit = async (e) =>{     
-        console.log(input)
-        await axios.post(addAssignmentAPI, input)
+        await axios.post(addAssignmentAPI, input, config)
         .then(response => {
             window.location.reload()})
     }

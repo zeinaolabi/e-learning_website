@@ -9,7 +9,7 @@ const config = {
 }
 
 function Assignments({courseID, isStudent}) {
-    const getAssignmentsAPI = "http://127.0.0.1:8000/api/get_instructors_assignments/" + courseID;
+    const getAssignmentsAPI = "http://127.0.0.1:8000/api/auth/get_assignments/" + courseID;
     const [assignment, setAssignment] = useState([]);
     const [showModal, setShow] = useState(false); 
 

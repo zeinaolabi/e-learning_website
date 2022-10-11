@@ -10,7 +10,7 @@ const config = {
 const EnrollStudentModal = (props) => {
     const [input, setInput] = useState({email:"", course_id: props.id});
     const [error, setError ] = useState("");
-    const enrollStudentAPI = "http://127.0.0.1:8000/api/enroll_student";
+    const enrollStudentAPI = "http://127.0.0.1:8000/api/auth/enroll_student";
 
     const submit = async (e) =>{     
         await axios.post(enrollStudentAPI, input, config)

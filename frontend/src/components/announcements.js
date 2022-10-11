@@ -8,7 +8,7 @@ const config = {
 }
 
 function Announcements({courseID}) {
-    const getAnnouncementsAPI = "http://127.0.0.1:8000/api/get_course_announcements/" + courseID;
+    const getAnnouncementsAPI = "http://127.0.0.1:8000/api/auth/get_course_announcements/" + courseID;
     const [announcement, setAnnouncement] = useState([]);
 
     const getAssignments = async() => {

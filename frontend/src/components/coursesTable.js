@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from 'react';
 import axios from "axios";
 import Modal from './courseModal';
-const updateUserAPI = "http://127.0.0.1:8000/api/update_course";
+const updateUserAPI = "http://127.0.0.1:8000/api/auth/update_course";
 const config = {
     headers: {
       Authorization: localStorage.getItem("token")

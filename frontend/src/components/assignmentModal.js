@@ -10,7 +10,7 @@ const config = {
 const AssignmentModal = (props) => {
     const [input, setInput] = useState({name:"", description:"", due_date:"", course_id: props.id, user_id: userID});
     const [error, setError ] = useState("");
-    const createAssignmentAPI = "http://127.0.0.1:8000/api/create_assignment";
+    const createAssignmentAPI = "http://127.0.0.1:8000/api/auth/create_assignment";
 
     const submit = async (e) =>{     
         await axios.post(createAssignmentAPI, input, config)

@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import CommonHeader from "../../components/commonHeader";
 import EnrolledStudentTable from '../../components/enrolledStudentsTable';
 import EnrollStudentModal from "../../components/enrollStudentModal";
-const baseURL = "http://127.0.0.1:8000/api";
+const baseURL = "http://127.0.0.1:8000/api/auth";
 
 const EnrolledStudentsPage = () => {
     const location = useLocation()
