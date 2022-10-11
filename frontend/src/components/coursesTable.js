@@ -14,8 +14,13 @@ function Table({url}) {
         setUser(response.data.Users)
     }
 
+    const getID = async(id) => {
+        setID(id);
+    }
+
     useEffect( () =>{
         getUsers()
+        getID();
     }, [])
 
     return(
@@ -29,7 +34,7 @@ function Table({url}) {
                 </tr>
                 {
                     user.map((data)=>{
-                        return(<tr><td>{data.name}</td><td>{data.description}</td><td>{data.user.first_name + " " + data.user.last_name}</td><td><img onClick={() => {setID(data._id); setShow(true);}} src="https://img.icons8.com/material/344/change-user-female.png"></img></td></tr>)
+                        return(<tr><td>{data.name}</td><td>{data.description}</td><td>{data.user.first_name + " " + data.user.last_name}</td><td><img onClick={() => {getID(data._id); setShow(true);}} src="https://img.icons8.com/material/344/change-user-female.png"></img></td></tr>)
                     })
                 }
             </tbody>

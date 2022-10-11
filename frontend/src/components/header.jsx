@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import Modal from './editProfileModal';
 import CourseModal from './courseModal';
 const addUserAPI = "http://127.0.0.1:8000/api/add_user";
-const addCourseAPI = "http://127.0.0.1:8000/api/add_user";
+const addCourseAPI = "http://127.0.0.1:8000/api/add_course";
 
 function Header({title, buttonTitle, type}) {
     const [showModal, setShow] = useState(false); 
