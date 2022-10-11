@@ -8,7 +8,7 @@ const config = {
     }
 }
 
-function Assignments({courseID}) {
+function Assignments({courseID, isStudent}) {
     const getAssignmentsAPI = "http://127.0.0.1:8000/api/get_instructors_assignments/" + courseID;
     const [assignment, setAssignment] = useState([]);
     const [showModal, setShow] = useState(false); 
@@ -26,7 +26,7 @@ function Assignments({courseID}) {
         <div className="assignments">
             <div class="assignments_header">
                 <h3 className="title">Assignments</h3>
-                <button onClick={()=>setShow(true)} className="blue_button">Add Assignment</button>
+                {isStudent ? "" : <button onClick={()=>setShow(true)} className="blue_button">Add Assignment</button>}
             </div>
         
             {

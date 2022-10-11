@@ -18,7 +18,7 @@ const StudentCoursePage = () => {
             <div className="course_page">
                 <div class="course_page_content">
                     <div className="assignments_container">
-                        <Assignments courseID={id}/>
+                        <Assignments courseID={id} isStudent={true}/>
                     </div>
                     <div className="announcements_container">
                         <Announcements courseID={id}/>
