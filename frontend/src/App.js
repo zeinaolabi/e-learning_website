@@ -8,6 +8,7 @@ import StudentPage from './views/StudentPage/coursesPage'
 import GetStudentsPage from './views/AdminPage/studentsPage';
 import GetCoursesPage from './views/InstructorPage/coursePage';
 import EnrolledStudentsPage from './views/InstructorPage/enrolledStudentsPage';
+import StudentCoursePage from './views/StudentPage/coursePage';
 
 const userID = localStorage.getItem("id");
 const userType = localStorage.getItem("type");
@@ -40,6 +41,7 @@ function App() {
           <Route path="/courses_page" element={<GetCoursesPage />} />
           <Route path="/instructor_course" element={<GetCoursesPage />} />
           <Route path="/enrolled_students" element={<EnrolledStudentsPage />} />
+          <Route path="/student_course" element={<StudentCoursePage />} />
         </Routes>
       </Router>
       
