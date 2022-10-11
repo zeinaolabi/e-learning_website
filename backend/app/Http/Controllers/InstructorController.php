@@ -56,12 +56,6 @@ class InstructorController extends Controller
             return response()->json($validator->errors()->toJSON(), 200);
         }
 
-//        if(!$this->validateExistence($request->user_id, $request->course_id)){
-//            return response()->json([
-//                "error" => "400",
-//                "message" => "Unable to Create Assignment"], 400);
-//        }
-
         Assignment::create($validator->validated());
 
         return response()->json(["message" => 'Assignment Successfully Created'], 201);
@@ -112,12 +106,6 @@ class InstructorController extends Controller
 
         if($validator->fails()){
             return response()->json($validator->errors()->toJSON(), 200);
-        }
-
-        if($this->validateExistence($request->user_id, $request->course_id)){
-            return response()->json([
-                "error" => "400",
-                "message" => "Unable to Create Announcement"], 400);
         }
 
         Announcement::create($validator->validated());
