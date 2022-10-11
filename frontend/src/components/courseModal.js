@@ -5,7 +5,6 @@ const Modal = (props) => {
     const [input, setInput] = useState({name:"", description:"", id: props.id});
     const [error, setError ] = useState("");
 
-    console.log(input)
     const submit = async (e) =>{     
         await axios.post(props.url, input)
         .then(response => {

@@ -19,7 +19,7 @@ function Table({url}) {
     }
 
     useEffect( () =>{
-        getUsers()
+        getUsers();
         getID();
     }, [])
 
@@ -34,7 +34,7 @@ function Table({url}) {
                 </tr>
                 {
                     user.map((data)=>{
-                        return(<tr><td>{data.name}</td><td>{data.description}</td><td>{data.user.first_name + " " + data.user.last_name}</td><td><img onClick={() => {getID(data._id); setShow(true);}} src="https://img.icons8.com/material/344/change-user-female.png"></img></td></tr>)
+                        return(<tr><td>{data.name}</td><td>{data.description}</td><td>{data.user.first_name + " " + data.user.last_name}</td><td><img onClick={() => {getID(data._id); setShow(true);}} src="https://img.icons8.com/ios-glyphs/2x/approve-and-update.png"></img></td></tr>)
                     })
                 }
             </tbody>
