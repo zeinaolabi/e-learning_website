@@ -17,14 +17,16 @@ class InstructorController extends Controller
     function enrollStudent(Request $request){
         $validator = Validator::make($request->all(), [
             'course_id' => 'required|string',
-            'user_id' => 'required|string'
+            'email' => 'required|string'
         ]);
 
         if($validator->fails()){
             return response()->json($validator->errors()->toJSON(), 200);
         }
 
-        $isEnrolled = EnrolledIn::where("user_id", $request->user_id)->
+        $user = User::where("email", $request->email)->first();
+
+        $isEnrolled = EnrolledIn::where("user_id", $user->_id)->
         where("course_id", $request->course_id)->first();
 
         if($isEnrolled){
@@ -33,7 +35,10 @@ class InstructorController extends Controller
                 "message" => 'Student Already Enrolled'], 400);
         }
 
-        EnrolledIn::create($validator->validated());
+        EnrolledIn::create([
+            'course_id' => $request->course_id,
+            'user_id' => $user->_id
+        ]);
 
         return response()->json(["message" => 'Student Successfully Enrolled'], 201);
     }
@@ -49,12 +54,6 @@ class InstructorController extends Controller
 
         if($validator->fails()){
             return response()->json($validator->errors()->toJSON(), 200);
-        }
-
-        if(!$this->validateExistence($request->user_id, $request->course_id)){
-            return response()->json([
-                "error" => "400",
-                "message" => "Unable to Create Assignment"], 400);
         }
 
         Assignment::create($validator->validated());
@@ -100,7 +99,6 @@ class InstructorController extends Controller
 
     function createAnnouncement(Request $request){
         $validator = Validator::make($request->all(), [
-            'title' => 'required|string',
             'description' => 'required|string',
             'course_id' => 'required|string',
             'user_id' => 'required|string'
@@ -108,12 +106,6 @@ class InstructorController extends Controller
 
         if($validator->fails()){
             return response()->json($validator->errors()->toJSON(), 200);
-        }
-
-        if($this->validateExistence($request->user_id, $request->course_id)){
-            return response()->json([
-                "error" => "400",
-                "message" => "Unable to Create Announcement"], 400);
         }
 
         Announcement::create($validator->validated());
@@ -177,7 +169,7 @@ class InstructorController extends Controller
         $assignment = Assignment::where("user_id", $userID)->
             where("course_id", $courseID)->get();
 
-        return response()->json($assignment, 201);
+        return response()->json($assignment, 200);
     }
 
     function getStudentsPerCourse($courseID){

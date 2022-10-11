@@ -7,6 +7,7 @@ use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'auth:api', 'prefix' => 'auth'], function () {
+    Route::get('get_instructors_courses', [InstructorController::class, "getInstructorsCourses"]);
 });
 
 Route::get('get_instructors', [AdminController::class, "getInstructors"]);
