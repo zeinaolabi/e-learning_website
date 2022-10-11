@@ -68,7 +68,7 @@ class AdminController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|unique:courses',
             'description' => 'required|string|max:150',
-            'user_id' => 'required|string',
+            'email' => 'required|string',
         ]);
 
         //If validation failed, display an error
@@ -76,7 +76,7 @@ class AdminController extends Controller
             return response()->json($validator->errors()->toJson(), 200);
         }
 
-        $user = User::find($request->user_id);
+        $user = User::where("email", $request->email)->first();
 
         if(!$user){
             return response()->json([
@@ -85,7 +85,11 @@ class AdminController extends Controller
             ], 400);
         }
 
-        $course = Course::create($validator->validated());
+        $course = Course::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'user_id' => $user->id,
+        ]);
 
         return response()->json([
             'message' => 'Course Successfully Added',
