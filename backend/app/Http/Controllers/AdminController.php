@@ -18,12 +18,24 @@ class AdminController extends Controller
                 "Users" => $users], 200);
     }
 
-    function getStudents(Request $request){
+    function getStudents(){
         $users = User::where("user_type_id", "3")->get();
 
         return response()->json([
                 "status" => "success",
                 "Users" => $users], 200);
+    }
+
+    function getCourses(){
+        $courses = Course::get();
+
+        foreach ($courses as $course) {
+            $course->user;
+        }
+
+        return response()->json([
+            "status" => "success",
+            "Users" => $courses], 200);
     }
 
     function addUser(Request $request){

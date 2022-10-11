@@ -11,6 +11,7 @@ Route::group(['middleware' => 'auth:api', 'prefix' => 'auth'], function () {
 
 Route::get('get_instructors', [AdminController::class, "getInstructors"]);
 Route::get('get_students', [AdminController::class, "getStudents"]);
+Route::get('get_courses', [AdminController::class, "getCourses"]);
 Route::post('add_user', [AdminController::class, "addUser"]);
 Route::post('add_course', [AdminController::class, "addCourse"]);
 Route::post('update_course', [AdminController::class, "updateCourse"]);
