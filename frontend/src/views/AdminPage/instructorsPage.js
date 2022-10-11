@@ -10,7 +10,7 @@ const AdminPage = () => {
         <div class="admin_container">
             <SideMenu />
             <div class="admin_content">
-                <Header title="Instructors Page" buttonTitle="Add Instructor"/>
+                <Header title="Instructors Page" buttonTitle="Add Instructor" type="2"/>
                 <Table url={baseURL + getInstructorsAPI}/>
             </div>
         </div>

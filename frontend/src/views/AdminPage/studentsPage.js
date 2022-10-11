@@ -1,23 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import SideMenu from '../../components/sideMenu';
 import Header from '../../components/header';
 import Table from '../../components/table';
 const baseURL = "http://127.0.0.1:8000/api";
-const getInstructorsAPI = "/get_students";
+const getStudentsAPI = "/get_students";
 
-console.log(baseURL + getInstructorsAPI);
-
-const GetStudentsPage = () => {
-
+const AdminPage = () => {
     return(
         <div class="admin_container">
             <SideMenu />
             <div class="admin_content">
-                <Header title="Students Page"/>
-                <Table url={baseURL + getInstructorsAPI}/>
+                <Header title="Instructors Page" buttonTitle="Add Student" type="3"/>
+                <Table url={baseURL + getStudentsAPI}/>
             </div>
         </div>
     )
 }
 
-export default GetStudentsPage;
+export default AdminPage;
