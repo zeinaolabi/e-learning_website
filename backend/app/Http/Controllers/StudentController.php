@@ -34,15 +34,8 @@ class StudentController extends Controller
         return response()->json($assignments, 200);
     }
 
-    function getStudentsCourses($courseID){
+    function getStudentsCourses(){
         $userID = Auth::id();
-        $courseExist = Course::find($courseID);
-
-        if(!$courseExist){
-            return response()->json([
-                'message' => 'Unable to Retrieve Data',
-            ], 400);
-        }
 
         $enrolledCourses = EnrolledIn::where("user_id", $userID)->pluck('course_id');
 
