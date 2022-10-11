@@ -26,7 +26,7 @@ function Table({url}) {
                 </tr>
                 {
                     user.map((data)=>{
-                        return(<tr><td>{data.first_name}</td><td>{data.last_name}</td><td>{data.email}</td><td><img src="./../images/update.png"></img></td></tr>)
+                        return(<tr><td>{data.first_name}</td><td>{data.last_name}</td><td>{data.email}</td><td><img src="https://img.icons8.com/material/344/change-user-female.png"></img></td></tr>)
                     })
                 }
             </tbody>

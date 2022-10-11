@@ -187,6 +187,10 @@ tr, td:last-child{
   border: none;
 }
 
+td img{
+  width: 25px;
+  height: 25px;
+}
 
 td, th{
   width: 33%;
