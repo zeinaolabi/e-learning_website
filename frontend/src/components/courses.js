@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from "react";
+import {Link} from 'react-router-dom';
 import axios from "axios";
 import Course from './course';
+
 const getCoursesAPI = "http://127.0.0.1:8000/api/get_instructors_courses";
 const config = {
     headers: {
@@ -8,8 +10,7 @@ const config = {
     }
 }
 
-
-function Courses({title}) {
+function Courses() {
     const [course, setCourse] = useState([]);
 
     const getCourses = async() => {
@@ -25,9 +26,8 @@ function Courses({title}) {
         <div className="courses">
             {
                 course.map((data)=>{
-                    console.log(data);
                     return(
-                        <Course title={data.name} description={data.description}/>
+                    <Link to="/instructor_course" state={{ id: data._id, title: data.name }} className="navbar_title"><Course title={data.name} description={data.description}/></Link>
                     )
                 })
             }

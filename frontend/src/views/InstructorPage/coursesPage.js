@@ -1,9 +1,8 @@
-import React from "react";
+import React, {useState} from "react";
 import CommonHeader from "../../components/commonHeader";
 import Courses from "../../components/courses"
 
-const InstructorPage = () => {
-
+const CoursesPage = () => {
     return(
         <div class="courses_container">
             <CommonHeader title="Courses"/>
@@ -12,4 +11,4 @@ const InstructorPage = () => {
     )
 }
 
-export default InstructorPage;
+export default CoursesPage;

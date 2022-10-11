@@ -1,11 +1,18 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import axios from "axios";
 
 const Modal = (props) => {
     const [input, setInput] = useState({id: props.id, email:"", password:"", first_name: "", last_name: "", user_type_id: props.type});
     const [error, setError ] = useState("");
 
+    useEffect(()=>{
+        
+        setInput({...input, id: props.id})
+
+    },[props.id])
+
     const submit = async (e) =>{     
+        debugger
         console.log(input)
         await axios.post(props.url, input)
         .then(response => {
