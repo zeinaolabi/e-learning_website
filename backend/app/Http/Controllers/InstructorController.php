@@ -156,7 +156,7 @@ class InstructorController extends Controller
     }
 
     function getInstructorsAssignments($courseID){
-        $userID = Auth::id();
+//        $userID = Auth::id();
 
         $courseExist = Course::find($courseID);
 
@@ -166,8 +166,7 @@ class InstructorController extends Controller
             ], 400);
         }
 
-        $assignment = Assignment::where("user_id", $userID)->
-            where("course_id", $courseID)->get();
+        $assignment = Assignment::where("course_id", $courseID)->get();
 
         return response()->json($assignment, 200);
     }
