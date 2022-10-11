@@ -12,7 +12,7 @@ function Header({title, buttonTitle, type}) {
             </div>
             <button onClick={() => setShow(true)} class="transparent_button">{buttonTitle}</button>
         </header>
-        <Modal onClose={()=>setShow(false)} show={showModal} url={addUserAPI} type={type}/>
+        <Modal onClose={()=>setShow(false)} show={showModal} url={addUserAPI} type={type} title="Add"/>
         </>
     )
 }

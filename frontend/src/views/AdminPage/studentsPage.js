@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import SideMenu from '../../components/sideMenu';
 import Header from '../../components/header';
-import Table from '../../components/table';
+import Table from '../../components/usersTable';
 const baseURL = "http://127.0.0.1:8000/api";
 const getStudentsAPI = "/get_students";
 

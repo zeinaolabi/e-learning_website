@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useState } from 'react';
 import axios from "axios";
-import Modal from './editProfileModal';
-const updateUserAPI = "http://127.0.0.1:8000/api/update_user";
+import Modal from './courseModal';
+const updateUserAPI = "http://127.0.0.1:8000/api/update_course";
 
 function Table({url}) {
 
@@ -24,19 +24,19 @@ function Table({url}) {
         <table>
             <tbody>
                 <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Email</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Instructor</th>
                 </tr>
                 {
                     user.map((data)=>{
-                        return(<tr><td>{data.first_name}</td><td>{data.last_name}</td><td>{data.email}</td><td><img onClick={() => {setID(data._id); setShow(true);}} src="https://img.icons8.com/material/344/change-user-female.png"></img></td></tr>)
+                        return(<tr><td>{data.name}</td><td>{data.description}</td><td>{data.user.first_name}</td><td><img onClick={() => {setID(data._id); setShow(true);}} src="https://img.icons8.com/material/344/change-user-female.png"></img></td></tr>)
                     })
                 }
             </tbody>
         </table>
 
-        <Modal onClose={()=>setShow(false)} url={updateUserAPI} show={showModal} user_id={id}/>
+        <Modal onClose={()=>setShow(false)} url={updateUserAPI} show={showModal} id={id}/>
         </>
     )
 }
