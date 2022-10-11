@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import SideMenu from '../../components/sideMenu';
-import Header from '../../components/header';
+import Header from '../../components/headerAdmin';
 import Table from '../../components/coursesTable';
 const baseURL = "http://127.0.0.1:8000/api";
 const getCoursesAPI = "/get_courses";

@@ -3,12 +3,11 @@ import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import React, {useState} from 'react';
 import LoginFrom from './views/loginPage';
 import AdminPanel from './views/AdminPage/instructorsPage';
-import InstructorPage from './views/instructorPage'
+import InstructorPage from './views/InstructorPage/coursesPage'
 import GetStudentsPage from './views/AdminPage/studentsPage';
 import GetCoursesPage from './views/AdminPage/coursesPage';
 
 const userID = localStorage.getItem("id");
-const userToken = localStorage.getItem("token");
 const userType = localStorage.getItem("type");
 
 function App() {

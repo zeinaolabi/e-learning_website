@@ -33,9 +33,7 @@ const Modal = (props) => {
 
                 </div>
                 <div className="modal_footer">
-                    <button onClick={event => {props.onClose(); 
-                        submit()
-                        ;}} 
+                    <button onClick={event => submit} 
                         className="blue_button">Submit</button>
                     {(error !== "") ? <span className="error_message">{error}</span> : ""}
                 </div>

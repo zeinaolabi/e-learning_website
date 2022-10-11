@@ -21,7 +21,7 @@ function Table({url}) {
     useEffect( () =>{
         getUsers();
         getID();
-    }, [])
+    }, [getUsers, getID])
 
     return(
         <>
