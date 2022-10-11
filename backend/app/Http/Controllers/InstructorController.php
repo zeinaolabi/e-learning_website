@@ -34,7 +34,7 @@ class InstructorController extends Controller
                 "error" => "400",
                 "message" => 'Student Already Enrolled'], 400);
         }
-        
+
         EnrolledIn::create([
             'course_id' => $request->course_id,
             'user_id' => $user->_id
