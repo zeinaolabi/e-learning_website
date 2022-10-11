@@ -20,7 +20,7 @@ const CoursePage = () => {
                     <div className="assignments_container">
                         <Assignments courseID={id}/>
                         
-                        <Link to="/enrolled_students" className="link" state={{courseID: id}}><button className="blue_button bigger">View Enrolled Students</button></Link>
+                        <Link to="/enrolled_students" className="link" state={{courseID: id, title: title}}><button className="blue_button bigger">View Enrolled Students</button></Link>
                     </div>
                     <div className="announcements_container">
                         <AnnouncementInput courseID={id}/>
