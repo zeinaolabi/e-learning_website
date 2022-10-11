@@ -21,9 +21,8 @@ const CoursePage = ({courseID}) => {
 
                     </div>
                     <div className="announcements_container">
-                        <AnnouncementInput />
+                        <AnnouncementInput courseID={id}/>
                         <Announcements courseID={id}/>
-                    
                     </div>
                 </div>
             </div>
