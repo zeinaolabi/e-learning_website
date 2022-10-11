@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import CommonHeader from "../../components/commonHeader";
 import Assignments from "../../components/assignments";
 import AnnouncementInput from "../../components/announcementInput";
+import Announcements from "../../components/announcements";
 
 const CoursePage = ({courseID}) => {
     const location = useLocation()
@@ -21,6 +22,7 @@ const CoursePage = ({courseID}) => {
                     </div>
                     <div className="announcements_container">
                         <AnnouncementInput />
+                        <Announcements courseID={id}/>
                     
                     </div>
                 </div>

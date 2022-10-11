@@ -436,6 +436,22 @@ a{
   margin: 1vh;
 }
 
+.announcements, .announced_by, .announcement_content{
+  width: 100%;
+}
+
+.uploaded_announcement{
+  height: fit-content;
+  padding:2vh 1vw;
+  width: 100%;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+}
+
+
 @media screen and (max-width: 1200px) {
   .login_form{
     width: 90%;
