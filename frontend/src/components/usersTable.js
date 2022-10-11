@@ -3,6 +3,11 @@ import { useState } from 'react';
 import axios from "axios";
 import Modal from './editProfileModal';
 const updateUserAPI = "http://127.0.0.1:8000/api/update_user";
+const config = {
+    headers: {
+      Authorization: localStorage.getItem("token")
+    }
+}
 
 function Table({url}) {
 
@@ -11,7 +16,8 @@ function Table({url}) {
     const [showModal, setShow] = useState(false); 
 
     const getUsers = async() => {
-        const response = await axios(url);
+        const response = await axios(url, config);
+        console.log(response)
         setUser(response.data.Users)
     }
 

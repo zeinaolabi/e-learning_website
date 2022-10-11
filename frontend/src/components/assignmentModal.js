@@ -12,12 +12,9 @@ const AssignmentModal = (props) => {
     const [error, setError ] = useState("");
     const createAssignmentAPI = "http://127.0.0.1:8000/api/create_assignment";
 
-    console.log(input);
     const submit = async (e) =>{     
-        console.log("hi");
         await axios.post(createAssignmentAPI, input, config)
         .then(response => {
-            console.log(response)
             window.location.reload()})
         .catch((error) =>{
             setError("Invalid Input")
